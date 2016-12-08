@@ -4,7 +4,7 @@
     <?php
     session_start();
     if(isset($_SESSION['token'])){
-        echo "<meta http-equiv=\"refresh\" content=\"0; url=http://35.156.104.229/gulbahceWeb/panel\">";
+        header('Location: panel/index.php');
     }
     ?>
     <meta charset="utf-8" />
@@ -49,7 +49,7 @@
         }else{
             $_SESSION['token'] = $obj->{'token'};
 
-            header('Location: panel/index.php');
+            header('Location: ./panel/index.php');
             exit();
         }
     }

@@ -6,7 +6,7 @@
 
     include 'includeFunc.php';
     if(!isset($_SESSION['token'])){
-        echo "<meta http-equiv=\"refresh\" content=\"0; url=http://localhost/gulbahceWeb\">";
+        header('Location: ../index.php');
     }
     ?>
     <meta charset="utf-8" />
