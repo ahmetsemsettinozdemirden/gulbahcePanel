@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
+    <?php
+    session_start();
+
+    if(isset($_SESSION['token'])){
+        header('Location: ./panel/index.php');
+    }
+
+    echo "1";
+    ?>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -19,7 +28,7 @@
     <?php
     echo "2";
 
-    include 'panel/includeFunc.php';
+    include './panel/includeFunc.php';
 
     $kullaniciadi = $password = $err = "";
 
