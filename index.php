@@ -1,29 +1,18 @@
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
-    <?php
-    session_start();
-
-    echo $_SESSION['token'];
-
-    if(isset($_SESSION['token'])){
-        header('Location: ./panel/index.php');
-    }
-
-    echo "1";
-    ?>
     <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>GulbahceCafe Admin Paneli</title>
     <meta http-equiv="Cache-Control" content="no-cache"/>
     <meta http-equiv="pragma" content="no-cache"/>
     <meta name="description" content="Desc." />
-    <link href="panel/css/bootstrap.min.css" rel="stylesheet">
-    <link href="panel/css/bootstrap-theme.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-    <link rel="stylesheet" href="panel/css/styles.css" type="text/css">
-    <link rel="stylesheet" href="panel/css/font-awesome.min.css">
+    <link href="panel/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="panel/css/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" />
+    <link rel="stylesheet" href="panel/css/styles.css" type="text/css" />
+    <link rel="stylesheet" href="panel/css/font-awesome.min.css" />
 </head>
 <body class="signin">
 
@@ -48,6 +37,7 @@
         echo "3";
 
         $response = httpPost($url, json_encode($postData));
+        echo "4";
         echo "Response: ".$response;
 
         $obj = json_decode($response);
