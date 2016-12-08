@@ -4,7 +4,7 @@
     <?php
     session_start();
     if(isset($_SESSION['token'])){
-        echo "<meta http-equiv=\"refresh\" content=\"0; url=http://localhost/gulbahceWeb/panel\">";
+        echo "<meta http-equiv=\"refresh\" content=\"0; url=http://35.156.104.229/gulbahceWeb/panel\">";
     }
     ?>
     <meta charset="utf-8" />
