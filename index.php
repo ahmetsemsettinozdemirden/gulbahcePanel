@@ -3,9 +3,14 @@
 <head>
     <?php
     session_start();
+
+    echo $_SESSION['token'];
+
     if(isset($_SESSION['token'])){
-        header('Location: panel/index.php');
+        header('Location: ./panel/index.php');
     }
+
+    echo "1";
     ?>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -23,6 +28,7 @@
 <body class="signin">
 
     <?php
+    echo "2";
 
     include 'panel/includeFunc.php';
 
@@ -38,6 +44,8 @@
         );
 
         $url = 'http://35.156.104.229:9000/panel/signIn';
+
+        echo "3";
 
         $response = httpPost($url, json_encode($postData));
         echo "Response: ".$response;
