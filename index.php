@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
-    <?
+    <?php
     session_start();
     if(isset($_SESSION['token'])){
         echo "<meta http-equiv=\"refresh\" content=\"0; url=http://localhost/gulbahceWeb/panel\">";
@@ -57,7 +57,7 @@
     ?>
 
     <div class="container">
-        <form class="form-signin" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+        <form class="form-signin" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <h2 class="form-signin-heading">Admin Girisi</h2>
             <label for="inputUsername" class="sr-only">Kullanici adi</label>
             <input type="text" id="inputUsername" name="username" class="form-control" placeholder="kullanici adi" required autofocus>
