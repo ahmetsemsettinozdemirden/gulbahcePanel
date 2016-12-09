@@ -78,7 +78,9 @@ parse_str($_SERVER['QUERY_STRING'], $queryArr);
             if(isset($queryArr['message']))
                 echo "<div class=\"errbox alert alert-success alert-dismissable fade in\"><a class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>" . $queryArr['message'] . "</div>";
 
+            echo $siparisler;
             ?>
+
             <div>
                 <h1 class="page-header">Siparisler</h1>
                 <div class="table-responsive">
@@ -97,7 +99,6 @@ parse_str($_SERVER['QUERY_STRING'], $queryArr);
                         <?php
 
                         foreach ($siparisler as $siparis) {
-                            echo $siparis;
                             echo "<tr>";
                             echo "<td>" . $siparis->{'phoneNumber'} . "</td>";
                             echo "<td>" . $siparis->{'name'} . "</td>";
