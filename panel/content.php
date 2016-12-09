@@ -105,7 +105,7 @@ parse_str($_SERVER['QUERY_STRING'], $queryArr);
 
                             $siparisEdilenUrunler = $siparis->{'basket'};
                             foreach ($siparisEdilenUrunler as $key => $order) {
-                                echo $order->{'quantity'} . " adet " . $order->{'name'} . $order->{'type'};
+                                echo $order->{'quantity'} . " adet " . $order->{'id'};
                                 if ($key !== count($siparisEdilenUrunler) - 1) {
                                     echo ", ";
                                 }
