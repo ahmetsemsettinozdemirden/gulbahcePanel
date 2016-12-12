@@ -76,7 +76,7 @@ parse_str($_SERVER['QUERY_STRING'], $queryArr);
             if(isset($queryArr['message']))
                 echo "<div class=\"errbox alert alert-success alert-dismissable fade in\"><a class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>" . $queryArr['message'] . "</div>";
 
-            echo $siparisler;
+
             ?>
 
             <div>
@@ -100,17 +100,14 @@ parse_str($_SERVER['QUERY_STRING'], $queryArr);
                             echo "<tr>";
                             echo "<td>" . $siparis->{'phoneNumber'} . "</td>";
                             echo "<td>" . $siparis->{'name'} . "</td>";
-                            echo "<td>" . $siparis->{'address'} . "</td><td>";
+                            echo "<td>" . $siparis->{'address'} . "</td><td><ul>";
 
                             $siparisEdilenUrunler = $siparis->{'basket'};
                             foreach ($siparisEdilenUrunler as $key => $order) {
-                                echo $order->{'quantity'} . " adet " . $order->{'id'};
-                                if ($key !== count($siparisEdilenUrunler) - 1) {
-                                    echo ", ";
-                                }
+                                echo "<li>".$order->{'quantity'} . " adet " . $order->{'name'} . "</li>";
                             }
 
-                            echo "</td><td>" . $siparis->{'notes'};
+                            echo "</ul></td><td>" . $siparis->{'notes'};
                             echo "</td><td>" . $siparis->{'status'};
                             echo "</tr>";
                         }
