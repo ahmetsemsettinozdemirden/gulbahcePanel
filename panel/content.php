@@ -2,8 +2,6 @@
 
 <?php
 
-$debug = false;
-
 $queryArr = array();
 parse_str($_SERVER['QUERY_STRING'], $queryArr);
 
@@ -60,7 +58,7 @@ parse_str($_SERVER['QUERY_STRING'], $queryArr);
 
             if (!isset($queryArr['page']) || strtolower($queryArr['page']) == 'siparisler'){
 
-            $response = httpPost('http://35.156.104.229:9000/panel/getOrders', json_encode(array('token' => $_SESSION['token'])));
+            $response = httpPost('http://'.$url.':9000/panel/getOrders', json_encode(array('token' => $_SESSION['token'])));
 
             if ($debug) echo $response;
 
@@ -125,7 +123,7 @@ parse_str($_SERVER['QUERY_STRING'], $queryArr);
         </div>
         <?php } else if (strtolower($queryArr['page']) == 'kampanyalar'){
 
-            $response = httpPost('http://35.156.104.229:9000/panel/getCampaigns', json_encode(array('token' => $_SESSION['token'])));
+            $response = httpPost('http://'.$url.':9000/panel/getCampaigns', json_encode(array('token' => $_SESSION['token'])));
 
             if ($debug) echo $response;
 
@@ -221,7 +219,7 @@ parse_str($_SERVER['QUERY_STRING'], $queryArr);
             </div>
         <?php } else if (strtolower($queryArr['page']) == 'menuler'){
 
-            $response = httpPost('http://35.156.104.229:9000/panel/getMenus', json_encode(array('token' => $_SESSION['token'])));
+            $response = httpPost('http://'.$url.':9000/panel/getMenus', json_encode(array('token' => $_SESSION['token'])));
 
             if ($debug) echo $response;
 
@@ -311,7 +309,7 @@ parse_str($_SERVER['QUERY_STRING'], $queryArr);
             </div>
         <?php } else if (strtolower($queryArr['page']) == 'icecekler'){
 
-            $response = httpPost('http://35.156.104.229:9000/panel/getDrinks', json_encode(array('token' => $_SESSION['token'])));
+            $response = httpPost('http://'.$url.':9000/panel/getDrinks', json_encode(array('token' => $_SESSION['token'])));
 
             if ($debug) echo $response;
 
@@ -395,7 +393,7 @@ parse_str($_SERVER['QUERY_STRING'], $queryArr);
             </div>
         <?php } else if (strtolower($queryArr['page']) == 'kullanicilar'){
 
-        $response = httpPost('http://35.156.104.229:9000/panel/getUsers', json_encode(array('token' => $_SESSION['token'])));
+        $response = httpPost('http://'.$url.':9000/panel/getUsers', json_encode(array('token' => $_SESSION['token'])));
 
         if ($debug) echo $response;
 

@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+include 'config.php';
 include 'includeFunc.php';
 $kullaniciadi = $password = $err = "";
 
@@ -21,7 +22,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         'photoUrl' => $photoUrl,
     );
 
-    $url = 'http://35.156.104.229:9000/panel/editMenu';
+    $url = 'http://'.$url.':9000/panel/editMenu';
 
     $response = httpPost($url, json_encode($postData));
     echo $response;

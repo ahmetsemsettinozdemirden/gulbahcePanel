@@ -4,6 +4,7 @@
     <?php
     session_start();
 
+    include 'config.php';
     include 'includeFunc.php';
     if(!isset($_SESSION['token'])){
         header('Location: ../index.php');

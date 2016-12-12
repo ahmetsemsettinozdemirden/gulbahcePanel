@@ -25,6 +25,7 @@
 
     <?php
 
+    include 'config.php';
     include './panel/includeFunc.php';
 
     $kullaniciadi = $password = $err = "";
@@ -38,7 +39,7 @@
             'password' => $password,
         );
 
-        $url = 'http://35.156.104.229:9000/panel/signIn';
+        $url = 'http://'.$url.':9000/panel/signIn';
 
         $response = httpPost($url, json_encode($postData));
 
