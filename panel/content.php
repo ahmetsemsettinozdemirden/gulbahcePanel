@@ -85,31 +85,46 @@ parse_str($_SERVER['QUERY_STRING'], $queryArr);
                     <table class="table table-striped">
                         <thead>
                         <tr>
+                            <th>#</th>
                             <th>Tel</th>
                             <th>Isim</th>
                             <th>Adres</th>
                             <th>Siparis</th>
                             <th>Notlar</th>
+                            <th>Saat</th>
                             <th>Durum</th>
+                            <th>Secenekler</th>
                         </tr>
                         </thead>
                         <tbody>
                         <?php
-
+                        $siparisler = array_reverse($siparisler);
                         foreach ($siparisler as $siparis) {
+                            $time = date("G:i", strtotime($siparis->{'updated_at'}));
+
                             echo "<tr>";
+                            echo "<td>" . $siparis->{'orderCounter'} . "</td>";
                             echo "<td>" . $siparis->{'phoneNumber'} . "</td>";
                             echo "<td>" . $siparis->{'name'} . "</td>";
                             echo "<td>" . $siparis->{'address'} . "</td><td><ul>";
 
                             $siparisEdilenUrunler = $siparis->{'basket'};
                             foreach ($siparisEdilenUrunler as $key => $order) {
-                                echo "<li>".$order->{'quantity'} . " adet " . $order->{'name'} . "</li>";
+                                echo "<li>".$order->{'quantity'} . " adet " . $order->{'name'} . $order->{'typeTr'} ."</li>";
                             }
 
-                            echo "</ul></td><td>" . $siparis->{'notes'};
-                            echo "</td><td>" . $siparis->{'status'};
-                            echo "</tr>";
+                            echo "</ul></td><td>" . $siparis->{'notes'} . "</td>";
+                            echo "<td>" . $time . "</td>";
+                            echo "<td>" . $siparis->{'status'} . "</td>";
+                            echo "<td><form action=\"deleteOrder.php\" method=\"post\" class=\"pull-left\"><input type=\"hidden\" name=\"id\" value=\"".$siparis->{'_id'}."\"><input type=\"submit\" value=\"Sil\" class=\"btn btn-danger\"></form>";
+                            if( $siparis->{'status'} == 'Onay Bekliyor'){
+                                echo "<form action=\"updateOrder.php\" method=\"post\" class=\"pull-left\" style=\"margin-left: 5px\"><input type=\"hidden\" name=\"id\" value=\"".$siparis->{'_id'}."\"><input type=\"hidden\" name=\"status\" value=\"Hazırlanıyor\"><input type=\"submit\" value=\"Hazırlanıyor\" class=\"btn btn-default\"></form>";
+                            }else if( $siparis->{'status'} == 'Hazırlanıyor'){
+                                echo "<form action=\"updateOrder.php\" method=\"post\" class=\"pull-left\" style=\"margin-left: 5px\"><input type=\"hidden\" name=\"id\" value=\"".$siparis->{'_id'}."\"><input type=\"hidden\" name=\"status\" value=\"Yola Çıktı\"><input type=\"submit\" value=\"Yola Çıktı\" class=\"btn btn-default\"></form>";
+                            }else if( $siparis->{'status'} == 'Yola Çıktı'){
+                                echo "<form action=\"updateOrder.php\" method=\"post\" class=\"pull-left\" style=\"margin-left: 5px\"><input type=\"hidden\" name=\"id\" value=\"".$siparis->{'_id'}."\"><input type=\"hidden\" name=\"status\" value=\"Tamamlandı\"><input type=\"submit\" value=\"Tamamlandı\" class=\"btn btn-default\"></form>";
+                            }
+                            echo "</td></tr>";
                         }
 
                         ?>

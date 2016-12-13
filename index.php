@@ -25,7 +25,7 @@
 
     <?php
 
-    include 'config.php';
+    include './panel/config.php';
     include './panel/includeFunc.php';
 
     $kullaniciadi = $password = $err = "";
